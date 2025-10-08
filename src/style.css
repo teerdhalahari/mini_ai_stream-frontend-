@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+#chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  padding: 1rem;
+  overflow-y: auto;
+  gap: 0.5rem;
+}
+
+.message {
+  max-width: 350px;
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  word-break: break-word;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+.message.tool {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;       /* Prevents line breaks */
+  overflow-x: auto;          /* Scrolls horizontally if too long */
+  padding: 0.5rem 0.75rem;
+  border-left: 4px solid #10b981;
+}
+
+.message.tool::-webkit-scrollbar {
+  height: 4px;
+}
+
+.message.tool::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 2px;
+}
+
+.message.tool strong {
+  margin-right: 0.25rem;
+}
+
+
+.user {
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  align-self: flex-end;
+  color: #fff;
+}
+
+.ai {
+  background: #2c2c2c;
+  align-self: flex-start;
+  border-left: 4px solid #3b82f6;
+}
+
+.tool {
+  background: #2a2a2a;
+  align-self: flex-start;
+  border-left: 4px solid #10b981;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tool.running { border-left-color: #facc15; }
+.tool.failed { border-left-color: #ef4444; }
+
+#input-container {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #222;
+}
+
+#input-container input {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 1rem;
+  border: none;
+  background: #333;
+  color: #fff;
+}
+
+#input-container button {
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  border: none;
+  background: #3b82f6;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.2s;
+}
+
+#input-container button:hover { background: #2563eb; }
+
+.typing {
+  font-style: italic;
+  color: #aaa;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background: #aaa;
+  border-radius: 50%;
+  animation: bounce 0.6s infinite alternate;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-6px); } }
+@keyframes fadeIn { to { opacity: 1; } }
